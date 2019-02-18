@@ -1,0 +1,40 @@
+$main-color: #4286f4;
+
+@mixin hoverBtn($color) {
+  background-color: darken($color, 10%);
+}
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.App {
+  text-align: center;
+
+  &__button {
+    width: 10rem;
+    height: 2rem;
+    background-color: $main-color;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    letter-spacing: 1px;
+    box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.75);
+    cursor: pointer;
+
+    &--show-films:hover {
+      @include hoverBtn($main-color);
+    }
+
+  }
+  &__wrapper-films {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 3rem 0;
+    justify-content: center;
+  }
+}
+

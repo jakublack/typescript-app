@@ -1,0 +1,63 @@
+$delete-color: #f44141;
+
+@mixin hoverBtn($color) {
+    background-color: darken($color, 10%);
+}
+
+.Film {
+    flex: 1 1 25%;
+    border: 1px solid #ccc;
+    padding: 1.5rem 1rem 1rem;
+    margin: 1rem;
+    max-width: 25%;
+
+    &__image-wrapper {
+        margin: 0 1rem;
+        cursor: pointer;
+        transition-duration: .5s;
+        &:hover {
+            transform: scale(1.1)
+        }
+    }
+    &__button {
+        width: auto;
+        height: 2rem;
+        background-color:$delete-color;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        letter-spacing: 1px;
+        box-shadow: 1px 1px 10px 0px rgba(0,0,0,0.75);
+        cursor: pointer;
+        &:hover {
+            @include hoverBtn($delete-color);
+        }
+    }
+
+    &__image {
+        width: 100%;
+    }
+
+    &__title  {
+        font-size: 1.1rem;
+    }
+
+    &__rating {
+        font-size: .8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .Film {
+        flex-basis: 35%;
+        max-width: 35%;
+    }
+}
+
+@media (max-width: 475px) {
+    .Film {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
