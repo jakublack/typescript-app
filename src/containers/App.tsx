@@ -4,21 +4,42 @@ import './App.scss';
 
 import Film from '../components/Film/Film'
 
+interface AppProps {
 
-class App extends React.Component<{}>  {
+}
 
-  state = {
-    films: [],
-    showBtn: true,
+interface AppState {
+  showBtn: boolean;
+  films: Array<Film>;
+}
+
+interface Film {
+  id: number;
+  title: string;
+  poster_path: string;
+  vote_average: number;
+  vote_count: number;
+  overview: string;
+}
+class App extends React.Component<AppProps, AppState>  {
+
+  constructor(props: AppProps) {
+    super(props);
+
+    this.state = {
+      films: [],
+      showBtn: true,
+    }
   }
 
-  showFilms() {
+
+  public showFilms() : void {
     fetch('https://api.themoviedb.org/3/trending/all/day?api_key=df3c5710c44169cdf3776559c77f511a')
       .then((response) => {
           return response.json();
       })
-      .then((myJson) => {
-        const films = myJson.results;
+      .then((response) => {
+        const films = response.results;
 
         console.log(films)
 
@@ -33,17 +54,17 @@ class App extends React.Component<{}>  {
       })
   }
 
-  showDetails = (details : string) => {
+  public showDetails = (details : string):void => {
     console.log(details)
   }
 
-  clickRemoveHandler = (id: number) => {
+  public clickRemoveHandler = (id: number): void => {
 
     // const filmNewList = this.state.films.filter(f => {
     //   return f.id !== id;
     // });
 
-    const filmIndex = this.state.films.findIndex((f:any) => {
+    const filmIndex = this.state.films.findIndex((f: Film) => {
       return f.id === id;
     });
 
@@ -55,13 +76,12 @@ class App extends React.Component<{}>  {
 
   }
 
-
-  render() {
+  public render() {
     let films = null;
 
     films = (
       <div className="App__wrapper-films">
-        {this.state.films.map((film : any) => {
+        {this.state.films.map((film: Film) => {
           return <Film
             click={() => this.showDetails(film.overview)}
             clickRemove={() => this.clickRemoveHandler(film.id)}

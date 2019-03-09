@@ -2,18 +2,24 @@ import React from 'react'
 
 import './Film.scss';
 
-// export interface Props {
-//     vote_average: number;
-//     title: string;
-//     poster_path: string;
-//     vote_count: number;
-// }
+export interface Film {
+    vote_average: number;
+    title: string;
+    poster_path: string;
+    vote_count: number;
+}
 
-const film = (props: any) => {
+interface PropsFilm {
+    data: Film;
+    click: (event: React.MouseEvent<HTMLElement>) => void;
+    clickRemove: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const film = (props: PropsFilm) => {
 
     let { vote_average: rating, title, poster_path, vote_count } = props.data;
 
-    let filmTitle = props.title === undefined ? "No title for this film" : props.title;
+    let filmTitle = title === undefined ? "No title for this film" : title;
 
     return (
         <div className="Film" >
