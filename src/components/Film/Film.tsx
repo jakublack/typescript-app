@@ -27,7 +27,7 @@ const film = (props: PropsFilm) => {
                 <img className = "Film__image" src={`https://image.tmdb.org/t/p/w500/${poster_path}`}/>
             </div>
             <p className = "Film__title">{filmTitle}</p>
-            <p className="Film__rating">This film raing is {rating} by {vote_count} vouts </p>
+            <p className="Film__rating">This film rating is {rating} by {vote_count} votes </p>
             <button className = "Film__button" onClick={props.clickRemove}>Remove from list</button>
         </div>
     )
