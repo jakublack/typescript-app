@@ -22,7 +22,7 @@ const film = (props: PropsFilm) => {
     let filmTitle = title === undefined ? "No title for this film" : title;
 
     return (
-        <div className="Film" >
+        <div className="Film">
             <div className="Film__image-wrapper" onClick={props.click}>
                 <img className = "Film__image" src={`https://image.tmdb.org/t/p/w500/${poster_path}`}/>
             </div>
@@ -34,3 +34,4 @@ const film = (props: PropsFilm) => {
 };
 
 export default film;
+
